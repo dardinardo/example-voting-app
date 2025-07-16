@@ -30,6 +30,9 @@ jobs:
         with:
           image-tag: "vote-app:latest"
           sysdig-secure-token: ${{ secrets.SYSDIG_SECURE_TOKEN }}
+          sysdig-secure-url: https://secure.sysdig.com
+        env:
+          SYSDIG_LOGLEVEL: debug
 
       # ---------------- RESULT APP ----------------
       - name: Build RESULT image
@@ -44,6 +47,9 @@ jobs:
         with:
           image-tag: "result-app:latest"
           sysdig-secure-token: ${{ secrets.SYSDIG_SECURE_TOKEN }}
+          sysdig-secure-url: https://secure.sysdig.com
+        env:
+          SYSDIG_LOGLEVEL: debug
 
       # ---------------- WORKER APP ----------------
       - name: Build WORKER image
@@ -58,4 +64,6 @@ jobs:
         with:
           image-tag: "worker-app:latest"
           sysdig-secure-token: ${{ secrets.SYSDIG_SECURE_TOKEN }}
-          
+          sysdig-secure-url: https://secure.sysdig.com
+        env:
+          SYSDIG_LOGLEVEL: debug
