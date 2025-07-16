@@ -28,8 +28,8 @@ jobs:
       - name: Scan VOTE image with Sysdig
         uses: sysdiglabs/scan-action@v4
         with:
-          image_tag: "vote-app:latest"
-          sysdig_secure_token: ${{ secrets.SYSDIG_SECURE_TOKEN }}
+          image-tag: "vote-app:latest"
+          sysdig-secure-token: ${{ secrets.SYSDIG_SECURE_TOKEN }}
 
       # ---------------- RESULT APP ----------------
       - name: Build RESULT image
@@ -42,8 +42,8 @@ jobs:
       - name: Scan RESULT image with Sysdig
         uses: sysdiglabs/scan-action@v4
         with:
-          image_tag: "result-app:latest"
-          sysdig_secure_token: ${{ secrets.SYSDIG_SECURE_TOKEN }}
+          image-tag: "result-app:latest"
+          sysdig-secure-token: ${{ secrets.SYSDIG_SECURE_TOKEN }}
 
       # ---------------- WORKER APP ----------------
       - name: Build WORKER image
@@ -56,5 +56,6 @@ jobs:
       - name: Scan WORKER image with Sysdig
         uses: sysdiglabs/scan-action@v4
         with:
-          image_tag: "worker-app:latest"
-          sysdig_secure_token: ${{ secrets.SYSDIG_SECURE_TOKEN }}
+          image-tag: "worker-app:latest"
+          sysdig-secure-token: ${{ secrets.SYSDIG_SECURE_TOKEN }}
+          
