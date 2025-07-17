@@ -1,4 +1,4 @@
-name: Build and Scan
+name: Push to Artifact Registry
 
 on:
   workflow_dispatch:
@@ -29,7 +29,7 @@ jobs:
         with:
           context: ./vote
           push: true
-          tags: europe-west3-docker.pkg.dev/ddn-sysdig-ta-001/ddn-voting-app-registry:latest
+          tags: europe-west3-docker.pkg.dev/ddn-sysdig-ta-001/ddn-voting-app-registry/vote:latest
 
       # ---------------- RESULT APP ----------------
       - name: Build RESULT image
@@ -37,7 +37,7 @@ jobs:
         with:
           context: ./result
           push: true
-          tags: europe-west3-docker.pkg.dev/ddn-sysdig-ta-001/ddn-voting-app-registry:latest
+          tags: europe-west3-docker.pkg.dev/ddn-sysdig-ta-001/ddn-voting-app-registry/result:latest
 
       # ---------------- WORKER APP ----------------
       - name: Build WORKER image
@@ -45,4 +45,4 @@ jobs:
         with:
           context: ./worker
           push: true
-          tags: europe-west3-docker.pkg.dev/ddn-sysdig-ta-001/ddn-voting-app-registry:latest
+          tags: europe-west3-docker.pkg.dev/ddn-sysdig-ta-001/ddn-voting-app-registry/worker:latest
