@@ -32,7 +32,7 @@ jobs:
           load: true
           tags: |
             vote-app:latest
-            europe-west3-docker.pkg.dev/ddn-sysdig-ta-001/ddn-voting-app-registry
+            europe-west3-docker.pkg.dev/ddn-sysdig-ta-001/ddn-voting-app-registry:latest
 
       - name: Scan VOTE image with Sysdig
         uses: sysdiglabs/scan-action@v4
@@ -51,7 +51,7 @@ jobs:
           load: true
           tags: |
             result-app:latest
-            europe-west3-docker.pkg.dev/ddn-sysdig-ta-001/ddn-voting-app-registry
+            europe-west3-docker.pkg.dev/ddn-sysdig-ta-001/ddn-voting-app-registry:latest
 
       - name: Scan RESULT image with Sysdig
         uses: sysdiglabs/scan-action@v4
@@ -70,7 +70,7 @@ jobs:
           load: true
           tags: |
             worker-app:latest
-            europe-west3-docker.pkg.dev/ddn-sysdig-ta-001/ddn-voting-app-registry
+            europe-west3-docker.pkg.dev/ddn-sysdig-ta-001/ddn-voting-app-registry:latest
 
       - name: Scan WORKER image with Sysdig
         uses: sysdiglabs/scan-action@v4
