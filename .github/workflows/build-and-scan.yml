@@ -29,54 +29,54 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: ./vote
-          load: true
+          push: true
           tags: |
             vote-app:latest
             europe-west3-docker.pkg.dev/ddn-sysdig-ta-001/ddn-voting-app-registry:latest
 
-      - name: Scan VOTE image with Sysdig
-        uses: sysdiglabs/scan-action@v4
-        with:
-          image-tag: "vote-app:latest"
-          sysdig-secure-token: ${{ secrets.SYSDIG_SECURE_TOKEN }}
-          sysdig-secure-url: https://eu1.app.sysdig.com
-        env:
-          SYSDIG_LOGLEVEL: debug
+      # - name: Scan VOTE image with Sysdig
+      #   uses: sysdiglabs/scan-action@v4
+      #   with:
+      #     image-tag: "vote-app:latest"
+      #     sysdig-secure-token: ${{ secrets.SYSDIG_SECURE_TOKEN }}
+      #     sysdig-secure-url: https://eu1.app.sysdig.com
+      #   env:
+      #     SYSDIG_LOGLEVEL: debug
 
       # ---------------- RESULT APP ----------------
       - name: Build RESULT image
         uses: docker/build-push-action@v5
         with:
           context: ./result
-          load: true
+          push: true
           tags: |
             result-app:latest
             europe-west3-docker.pkg.dev/ddn-sysdig-ta-001/ddn-voting-app-registry:latest
 
-      - name: Scan RESULT image with Sysdig
-        uses: sysdiglabs/scan-action@v4
-        with:
-          image-tag: "result-app:latest"
-          sysdig-secure-token: ${{ secrets.SYSDIG_SECURE_TOKEN }}
-          sysdig-secure-url: https://eu1.app.sysdig.com
-        env:
-          SYSDIG_LOGLEVEL: debug
+      # - name: Scan RESULT image with Sysdig
+      #   uses: sysdiglabs/scan-action@v4
+      #   with:
+      #     image-tag: "result-app:latest"
+      #     sysdig-secure-token: ${{ secrets.SYSDIG_SECURE_TOKEN }}
+      #     sysdig-secure-url: https://eu1.app.sysdig.com
+      #   env:
+      #     SYSDIG_LOGLEVEL: debug
 
       # ---------------- WORKER APP ----------------
       - name: Build WORKER image
         uses: docker/build-push-action@v5
         with:
           context: ./worker
-          load: true
+          push: true
           tags: |
             worker-app:latest
             europe-west3-docker.pkg.dev/ddn-sysdig-ta-001/ddn-voting-app-registry:latest
 
-      - name: Scan WORKER image with Sysdig
-        uses: sysdiglabs/scan-action@v4
-        with:
-          image-tag: "worker-app:latest"
-          sysdig-secure-token: ${{ secrets.SYSDIG_SECURE_TOKEN }}
-          sysdig-secure-url: https://eu1.app.sysdig.com
-        env:
-          SYSDIG_LOGLEVEL: debug
+      # - name: Scan WORKER image with Sysdig
+      #   uses: sysdiglabs/scan-action@v4
+      #   with:
+      #     image-tag: "worker-app:latest"
+      #     sysdig-secure-token: ${{ secrets.SYSDIG_SECURE_TOKEN }}
+      #     sysdig-secure-url: https://eu1.app.sysdig.com
+      #   env:
+      #     SYSDIG_LOGLEVEL: debug
