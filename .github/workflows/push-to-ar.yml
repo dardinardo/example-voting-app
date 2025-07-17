@@ -1,0 +1,48 @@
+name: Build and Scan
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-and-scan-images:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - uses: "google-github-actions/auth@v2"
+        with:
+          credentials_json: ${{ secrets.GCP_ARTIFACT_REGISTRY_SA_KEY }}
+
+      - name: Configure Docker for Artifact Registry
+        run: gcloud auth configure-docker europe-west3-docker.pkg.dev
+
+      # ---------------- VOTE APP ----------------
+      - name: Build VOTE image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./vote
+          push: true
+          tags: europe-west3-docker.pkg.dev/ddn-sysdig-ta-001/ddn-voting-app-registry:latest
+
+      # ---------------- RESULT APP ----------------
+      - name: Build RESULT image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./result
+          push: true
+          tags: europe-west3-docker.pkg.dev/ddn-sysdig-ta-001/ddn-voting-app-registry:latest
+
+      # ---------------- WORKER APP ----------------
+      - name: Build WORKER image
+        uses: docker/build-push-action@v5
+        with:
+          context: ./worker
+          push: true
+          tags: europe-west3-docker.pkg.dev/ddn-sysdig-ta-001/ddn-voting-app-registry:latest
